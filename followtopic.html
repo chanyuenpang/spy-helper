@@ -1,24 +1,25 @@
 <div class="row">
 	<div class="span4 offset1 content">
+		<div><h2>创建词语</h2></div>
 		<div>
 			<h1 id="lbCount">0/0</h1>
 		</div>
 		<div id="createTopic" class="invisible">
-			<a data-toggle="collapse" data-parent="#createTopic" href="#content">创建题目</a>
+			<a data-toggle="collapse" data-parent="#createTopic" href="#content">创建引导词</a>
 			<div id="content" class="collapse in">
 				<div>
-					<p>你是房主，可以创建一个题目，或者使用讨论好的题目。</p>
-					<input id="txtLeadTopic" type="text">
+					<p>你是房主，可以创建一个引导词，或者使用讨论好的主题。</p>
+					<input id="txtLeadTopic" type="text" placeholder="Leader Topic">
 				</div>
 				<div>
-					<a class="btn btn-large btn-primary" href="javascript:DM.CreateTopic();">创建题目</a>
+					<a class="btn btn-large btn-primary" href="javascript:DM.CreateTopic();">创建</a>
 				</div>
 			</div>
 		</div>
 		<div class="before-submit">
 			<div>
 				<p>请在下面输入框输入一个和题目相关的词语。</p>
-				<input id="txtTopic" type="text">
+				<input id="txtTopic" type="text" placeholder="Topic">
 			</div>
 			<div>
 				<a class="btn btn-large btn-success" href="javascript:DM.SubmitTopic();">提交</a>
