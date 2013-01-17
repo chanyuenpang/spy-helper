@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="span4 offset1 content">
+		<div>
+			<h1 id="lbCount">0/0</h1>
+		</div>
+		<div id="createTopic" class="invisible">
+			<a data-toggle="collapse" data-parent="#createTopic" href="#content">创建题目</a>
+			<div id="content" class="collapse in">
+				<div>
+					<p>你是房主，可以创建一个题目，或者使用讨论好的题目。</p>
+					<input id="txtLeadTopic" type="text">
+				</div>
+				<div>
+					<a class="btn btn-large btn-primary" href="javascript:DM.CreateTopic();">创建题目</a>
+				</div>
+			</div>
+		</div>
+		<div class="before-submit">
+			<div>
+				<p>请在下面输入框输入一个和题目相关的词语。</p>
+				<input id="txtTopic" type="text">
+			</div>
+			<div>
+				<a class="btn btn-large btn-success" href="javascript:DM.SubmitTopic();">提交</a>
+			</div>
+		</div>
+		<div class="invisible after-submit">
+			<p>正在等待其他人提交词语...</p>
+			<div class="invisible host-only">
+				<a class="btn btn-large btn-info" href="javascript:DM.GetReady();">马上开始</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
