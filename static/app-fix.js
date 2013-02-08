@@ -240,7 +240,7 @@ var DM = {
 				room.players[name] = 0;
 			}
 			return room;
-		}, function(error,snap,dummy){
+		}, function(error,commited,snap){
 			if(error){
 				return;
 			}
