@@ -240,8 +240,8 @@ var DM = {
 				room.players[name] = 0;
 			}
 			return room;
-		}, function(success,snap){
-			if(!success){
+		}, function(error,snap){
+			if(error){
 				return;
 			}
 			var room = snap.val();
@@ -259,6 +259,7 @@ var DM = {
 			}
 
 			DM.RoomData = room;
+
 			DM.DoneLogin();
 			if(room.host == DM.PlayerName){
 				DM.MakeHost();
@@ -325,8 +326,8 @@ var DM = {
 
 	SetGameStatus : function(status, callback){
 		var fb = DM.FBRoom();
-		fb.update({status:status}, function(success){
-			if(!success) DM.SetGameStatus(status,callback);
+		fb.update({status:status}, function(error){
+			if(error) DM.SetGameStatus(status,callback);
 			else callback();
 		});
 	},
@@ -378,8 +379,8 @@ var DM = {
 			{
 				data:data,
 				status:GameStatus.OnGame
-			}, function(success){
-			if(!success) show_info('vInfo','上传数据失败，请重试','error');
+			}, function(error){
+			if(error) show_info('vInfo','上传数据失败，请重试','error');
 			else {
 				show_info('vInfo','开始游戏','success',true);
 				DM.RoomData.data = data;
@@ -404,8 +405,8 @@ var DM = {
 
 	ExitRoom : function(){
 		var fb = DM.FBRoom();
-		fb.set(null,function(success){
-			if(!success) DM.ExitRoom();
+		fb.set(null,function(error){
+			if(error) DM.ExitRoom();
 			else {
 				show_info('vInfo','由于人数不足，房间已经被关闭，请重新进入。','info',true);
 				goLogin();
@@ -424,8 +425,8 @@ var DM = {
 
 	MakeHost : function(){
 		var fb = DM.FBRoom();
-		fb.update({host:DM.PlayerName},function(success){
-			if(!success) DM.FindNewHost();
+		fb.update({host:DM.PlayerName},function(error){
+			if(error) DM.FindNewHost();
 			else {
 				DM.RoomData.host = DM.PlayerName;
 				DM.IsHost = true;
@@ -439,8 +440,8 @@ var DM = {
 		var topic = verifyInput('#txtTopic','Please type something related to the topic so we can move on.','error');
 		if(!topic) return;
 		var fb = DM.FBTopics();
-		fb.push({content:topic,creator:DM.PlayerName}, function(success){
-			if(!success) show_info('vInfo','Sorry,please try again','error');
+		fb.push({content:topic,creator:DM.PlayerName}, function(error){
+			if(error) show_info('vInfo','Sorry,please try again','error');
 			else {
 				show_info('vInfo','提交成功，请稍等','success',true);
 				DM.AfterSubmit();
@@ -462,8 +463,8 @@ var DM = {
 		fb.update({
 			data : null,
 			status : GameStatus.Preparing
-		},function(success){
-			if(!success) DM.ClearUp();
+		},function(error){
+			if(error) DM.ClearUp();
 			else {
 				DM.RoomData.data = null;
 				DM.RoomData.status = GameStatus.Preparing;
