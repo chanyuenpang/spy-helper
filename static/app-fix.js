@@ -240,13 +240,13 @@ var DM = {
 				room.players[name] = 0;
 			}
 			return room;
-		}, function(error,commited,snap){
+		}, function(error,committed,snap){
 			if(error){
 				return;
 			}
 			var room = snap.val();
 			if(room.psw != psw){
-				show_info('vInfo', roomID === 'defalut' ? "默认房间已经被使用了，请新建一个房间或输入正确的密码。" : "密码不正确。",'error');
+				show_info('vInfo', roomID === 'default' ? "默认房间已经被使用了，请新建一个房间或输入正确的密码。" : "密码不正确。",'error');
 				goLogin();
 				return;
 			}
